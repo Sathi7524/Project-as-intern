@@ -1,0 +1,158 @@
+{% extends 'base1.html' %}
+{% block title %}
+ Buget Page
+{% endblock %}
+ {% block content %}
+<div clas="container">
+    {% for ele in projects %}
+    {% if ele.project_details_id==id %}
+    <h4>ele.project_name</h4>
+    {% endif %}
+    {% endfor %}
+        <a href="../projects" class="card-link">Back</a>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">  Add Labor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="">
+            <div class="form-group">
+      <label for="workstream">Workstream:</label>
+    <select class="form-control" name="workstream"id="workstream">
+   {% for ele in workst %}
+    <option>{{ele.name}}</option>
+   {% endfor %}
+  </select>
+    </div>
+               <div class="form-group">
+      <label for="labor category">Labor Category:</label>
+
+            <select class="form-control" name="labor_category"id="labor category">
+     {% for ele in labct %}
+    <option>{{ele.labor_type}}</option>
+   {% endfor %}
+  </select>
+    </div>
+
+                <div class="form-group">
+      <label for="country">Country:</label>
+
+            <select class="form-control" name="country" id="country">
+    <option>India</option>
+                 <option>US</option>
+
+  </select>
+    </div>
+
+              <div class="form-group">
+      <label for="totallaborhours">Total labor hours:</label>
+
+       <input type="text" class="form-control" name="totallaborhours" id="totallaborhours"placeholder="totallaborhours" ></td>
+
+  </select>
+    </div>
+
+             <div class="form-group">
+      <label for="costperhour">Hourly Rate($):</label>
+
+       <input type="text" class="form-control" name="costperhour" id="costperhour"placeholder="costperhour" ></td>
+
+  </select>
+    </div>
+<button type="submit" class="btn btn-primary">Save changes</button>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    {% set total=[] %}
+<table class="table" id="myTable">
+  <thead>
+    <tr>
+      <th scope="col">workstream</th>
+      <th scope="col">labor category</th>
+       <th scope="col">Country</th>
+      <th scope="col">Total labor hours</th>
+       <th scope="col">cost per hour($)</th>
+         <th scope="col">Total</th>
+     <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for ele in bd %}
+   <tr>
+       <td>{{workstid2[ele.workstream_id]}}</td>
+         <td>{{labcttype[ele.labor_category_id]}}</td>
+         <td>{{labctc[labcttype[ele.labor_category_id]]}}</td>
+         <td>{{ele.labor_hours}}</td>
+         <td>{{ele.pay_per_hour}}</td>
+         <td>{% set h=ele.labor_hours %}
+             {% set c=ele.pay_per_hour%}
+             {% set t=h*c %}
+             {{ t }}
+             {% if total.append(t) %} {% endif %}
+         </td>
+        <td>
+      <a href="#" class="card-link" class="btn btn-primary">Edit</a>
+    <form method="POST" action="/delete/{{ ele.budget_breakdown_id }}">
+     <button type="submit" class="btn btn-danger">delete</button>
+    </form>
+        </td>
+   </tr>
+  {% endfor %}
+  <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+
+      <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add Labor
+</button>
+
+</td>
+      <td></td>
+      <td></td>
+      <td></td>
+  </tr>
+  <tr>
+      <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+      <td></td>
+       <td> {% set grandtotal = [0] -%}
+{% for ele in total -%}
+    {% if grandtotal.append(grandtotal.pop()+ ele) -%}{% endif %}
+{% endfor %}
+      Total Budget: ${{ grandtotal }}</td>
+      <td></td>
+      <td></td>
+  </tr>
+  </tbody>
+
+</table>
+
+</div>
+<script>
+  var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
+</script>
+{% endblock %}
+

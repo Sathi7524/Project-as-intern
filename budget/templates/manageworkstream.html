@@ -1,0 +1,76 @@
+{% extends 'base1.html' %}
+{% block title %}
+  Manage Workstream
+{% endblock %}
+{% block content %}
+ <a href="./settings" class="card-link">Back</a>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Workstream </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="">
+
+              <div class="form-group">
+      <label for="name">Workstream name:</label>
+
+       <input type="text" class="form-control" name="name" id="name"placeholder="workstream name" ></td>
+
+    </div>
+<button type="submit" class="btn btn-primary">Add workstream</button>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table" id="myTable">
+  <thead>
+    <tr>
+      <th scope="col">workstream id</th>
+      <th scope="col">workstream name</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for id,name in workstid2.items() %}
+   <tr>
+       <td>{{ id }}</td>
+       <td>{{ name }}</td>
+   </tr>
+  {% endfor %}
+  <tr>
+      <td></td>
+      <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+   Add workstream
+</button>
+
+</td>
+
+  </tr>
+  </tbody>
+
+</table>
+
+
+
+<script>
+  var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
+</script>
+
+
+
+{% endblock %}

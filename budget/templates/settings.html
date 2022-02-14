@@ -1,0 +1,12 @@
+{% extends 'base1.html' %}
+{% block title %}
+ Settings Page
+{% endblock %}
+ {% block content %}
+<div class="container" style="border:1px solid #cecece;">
+ <a class="nav-link" href="{{url_for('manageusers')}}"><h4>Manage Users</h4></a>
+ <a class="nav-link" href="{{url_for('manageworkstream')}}"><h4>Manage Workstream</h4></a>
+
+ <a class="nav-link" href="{{url_for('managelabor')}}"><h4>Manage labor Category</h4></a>
+</div>
+{% endblock %}

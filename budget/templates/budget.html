@@ -1,0 +1,57 @@
+{% extends 'base1.html' %}
+{% block title %}
+ Buget Page
+{% endblock %}
+ {% block content %}
+
+
+
+
+
+<div class="container">
+    <div>
+    <h6>projects:</h6>
+             <select class=""  name="projectidname"id="projects">
+     {% for ele in projects %}
+    <option>{{ele.project_details_id}},{{ele.project_name}}</option>
+   {% endfor %}
+  </select>
+
+</div>
+    {% set total=[] %}
+<table class="table" id="myTable">
+  <thead>
+    <tr>
+      <th scope="col">workstream</th>
+      <th scope="col">labor category</th>
+       <th scope="col">Country</th>
+      <th scope="col">Total labor hours</th>
+       <th scope="col">cost per hour($)</th>
+         <th scope="col">Total</th>
+     <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+
+</table>
+    {% set grandtotal = [0] -%}
+{% for ele in total -%}
+    {% if grandtotal.append(grandtotal.pop()+ ele) -%}{% endif %}
+{% endfor %}
+
+
+
+      Total: ${{ grandtotal }}
+</div>
+<script>
+  var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
+</script>
+{% endblock %}
+

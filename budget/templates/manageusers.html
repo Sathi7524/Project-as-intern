@@ -1,0 +1,38 @@
+{% extends 'base1.html' %}
+{% block title %}
+  Manage users
+{% endblock %}
+{% block content %}
+<a href="./settings" class="card-link">Back</a>
+
+<table class="table" id="myTable">
+  <thead>
+    <tr>
+      <th scope="col">User id</th>
+      <th scope="col">Email id</th>
+        <th scope="col">First name</th>
+         <th scope="col">Last name</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for ele in users %}
+   <tr>
+       <td>{{ ele[0] }}</td>
+       <td>{{ ele[1] }}</td>
+       <td>{{ ele[2]}}</td>
+         <td>{{ ele[3] }}</td>
+   </tr>
+  {% endfor %}
+  <tr>
+      <td></td>
+       <td></td>
+      <td>
+
+</td>
+<td></td>
+  </tr>
+  </tbody>
+
+</table>
+{% endblock %}

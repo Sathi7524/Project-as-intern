@@ -1,0 +1,16 @@
+{% extends 'base1.html' %}
+{% block title %}
+ Home Page
+{% endblock %}
+
+{% block content %}
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{session['picture']}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Name : {{session['name']}}</h5>
+    <p class="card-text"> Family Name: {{session['family_name']}}</p>
+    <p class="card-text"> Email id: {{session['email']}}</p>
+  </div>
+</div>
+
+{% endblock %}
