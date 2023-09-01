@@ -4,11 +4,9 @@ Project Budget Resource Analyzer
 
 ## Overview
 
-This web application is built using Angular and Flask and is designed to analyze project resource billable rates for each resource in a project and calculate the total project budget. The core of the application involves the design of the database schema, which is implemented using SQL-Alchemy. Bootstrap and Jinja 2 are used for frontend development.
+This web application is built using Flask and is designed to analyze project resource billable rates for each resource in a project and calculate the total project budget. The core of the application involves the design of the database schema, which is implemented using SQL-Alchemy. Bootstrap and Jinja 2 are used for frontend development.
 
 ## Technologies Used
-
-- **Angular**: Angular is used for building the frontend of the web application. It provides a structured framework for creating dynamic web pages.
 
 - **Flask**: Flask is the backend framework that handles server-side logic, routing, and API endpoints. It integrates seamlessly with SQL-Alchemy.
 
