@@ -33,4 +33,4 @@ To run this project locally, follow these steps:
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/yourusername/project-resource-rate-analyzer.git
+   git clone https://github.com/Sathi7524/Project-as-intern.git
